@@ -1,0 +1,32 @@
+li {
+    list-style: none;
+    padding-left: 16px;
+  }
+
+  .navbar {
+    background-color: #000000;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #FFFFFF; 
+  }
+  
+  .navbar-brand{
+    background-color: #000000;
+    color: #FFFFFF; 
+  }
+
+  #botonWhite{
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+  
+  #botonBlack{
+    background-color:#000000;
+    border-color: white;
+    color: #FFFFFF;
+    
+  }
+  #alertPassword{
+    display: none;
+  }
+
+  
