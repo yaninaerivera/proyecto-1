@@ -300,9 +300,9 @@ function activarCookies(){
 function creandoCookies(){
 
 // Crear las Cookies:
-document.cookie = "miCookie1=APRENDERinformática_1; expires=Mon, 25 May 2012 11:12:13 UTC; path=/";
-document.cookie = "miCookie2=APRENDERinformática_2; expires=Mon, 25 May 2012 11:12:13 UTC; path=/";
-document.cookie = "miCookie3=APRENDERinformática_3; expires=Mon, 25 May 2012 11:12:13 UTC; path=/";
+document.cookie = "miCookie1=APRENDERinformática_1; expires=Mon, 29 Jun 2020 11:12:13 UTC; path=/";
+document.cookie = "miCookie2=APRENDERinformática_2; expires=Mon, 29 Jun 2020 11:12:13 UTC; path=/";
+document.cookie = "miCookie3=APRENDERinformática_3; expires=Mon, 29 Jun 2020 11:12:13 UTC; path=/";
 
 // Mostrar la cadena con las cookies:
 document.write( "COOKIES:" + document.cookie + "<p />" );
