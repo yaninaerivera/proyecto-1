@@ -26,7 +26,10 @@ li {
   
 }
 
-#alertPassword{
-  display: none;
+#mensajePasswordEmpty{
+  opacity: 0.0;
+  background: #FFFFFF;
+  color: white;
+  
 }
 

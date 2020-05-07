@@ -1,10 +1,19 @@
 
-document.getElementById("alertPassword").addEventListener("load", loadAlert);
-
-function loadAlert(){
-    document.getElementById("alertPassword").style.display="none";
+function mostrarMensajePassVacia(){
+   document.getElementById('mensajePasswordEmpty').style.background="red";
+   document.getElementById('mensajePasswordEmpty').style.opacity="1.0";
 }
 
+function quitarMensajePassVacia(){
+
+    document.getElementById('mensajePasswordEmpty').style.opacity="0.0";
+    
+    if (document.getElementById('mensajePasswordEmpty').href == 'css/blackstyle.css'){
+        document.getElementById('mensajePasswordEmpty').style.background="black";
+    }
+    else
+    document.getElementById('mensajePasswordEmpty').style.background="white";
+}
 
 function cambiarAEstiloNegro(){
     document.getElementById('estilos').href = 'css/blackstyle.css';
@@ -25,28 +34,6 @@ document.getElementById("botonBlack").onclick = function(){
     cambiarAEstiloNegro();
 }
 
-function mostrarAlert() {
-    var alertMensaje = document.getElementById("alertPassword");
-    if(alertMensaje.style.display == "none") {
-        alertMensaje.style.display = "block";
-        
-    }
-    else {
-        alertMensaje.style.display = "none";
-    }
-
-}
-
-function ocultarAlert() {
-    var alertMensaje = document.getElementById("alertPassword");
-    if(alertMensaje.style.display == "block") {
-        alertMensaje.style.display = "none";
-    }
-    else {
-        alertMensaje.style.display = "none";
-    }
-
-}
 
 function mostrarContrasenia(){
     var passwordType = document.getElementById("inputPassword");
@@ -63,13 +50,13 @@ function analizarContrasenia(){
     var error = document.getElementById('error');
 
     if(password.value === null || password.value === '' ){
-        error.innerHTML = ("La contrasenia ingresada es vacia");
-        mostrarAlert();
+       // error.innerHTML = ("La contrasenia ingresada es vacia");
+        mostrarMensajePassVacia();
     }
     else{
-        error.innerHTML = (" se ha ingresado una contrasenia valida ");
-        ocultarAlert();
-       analizarSecuencia();
+        //error.innerHTML = (" se ha ingresado una contrasenia valida ");
+        quitarMensajePassVacia();
+        analizarSecuencia();
     }
     
     return false;
@@ -298,3 +285,53 @@ function analizarUnTipoSecuencia(cantNum,cantLetras,cantCaracteres){
     }
 
 }
+
+
+function activarCookies(){
+
+    if( navigator.cookieEnabled == true ) {
+        alert("El uso de cookies está activado");
+    }
+    else {
+        alert("El uso de cookies está desactivado");
+    }
+}
+
+function creandoCookies(){
+
+// Crear las Cookies:
+document.cookie = "miCookie1=APRENDERinformática_1; expires=Mon, 25 May 2012 11:12:13 UTC; path=/";
+document.cookie = "miCookie2=APRENDERinformática_2; expires=Mon, 25 May 2012 11:12:13 UTC; path=/";
+document.cookie = "miCookie3=APRENDERinformática_3; expires=Mon, 25 May 2012 11:12:13 UTC; path=/";
+
+// Mostrar la cadena con las cookies:
+document.write( "COOKIES:" + document.cookie + "<p />" );
+// Obtener un array con el nombre y valor de una cookie guardados como cadena, en cada posición:
+var aCookies = document.cookie.split(";");
+// Variables auxiliares:
+var contador;
+var posicionSignoIgual;
+var nombreCookie;
+var valorCookie;
+for( contador=0; contador < aCookies.length; contador++ )
+{
+    // Obtenemos la posición en la que está el signo igual
+    // No lo ponemos fuera del bucle porque los nombres puede que no tengan la misma longitud
+    posicionSignoIgual = aCookies[contador].indexOf("=");
+    // Obtenemos el nombre de la cookie, eliminando espacios
+    nombreCookie = aCookies[contador].substring( 0, posicionSignoIgual ).replace(" ", "");
+    // Añadimos 1 'posicionSignoIgual' porque con substring() las posiciones de la cadena comienzan desde cero:
+    valorCookie = aCookies[contador].substring( posicionSignoIgual + 1 );
+    // Mostramos el valor
+    document.write( "[" + nombreCookie + "] = [" + valorCookie + "]<br />" );
+    console.log( "[" + nombreCookie + "] = [" + valorCookie + "]<br />" );
+}
+
+}
+
+function admiCookies(){
+    activarCookies();
+    creandoCookies();
+}
+
+admiCookies();
