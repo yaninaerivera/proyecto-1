@@ -1,3 +1,4 @@
+imprimirPassGuardadas();
 
 function mostrarMensajePassVacia(){
    document.getElementById('mensajePasswordEmpty').style.background="red";
@@ -47,6 +48,7 @@ function mostrarContrasenia(){
 function analizarContrasenia(){
     
     var password = document.getElementById('inputPassword');
+    guardarPasswordsIngresadas(password.value);
     var error = document.getElementById('error');
 
     if(password.value === null || password.value === '' ){
@@ -75,10 +77,8 @@ function esNumero(caracter){
 
 function analizarSecuencia(){
     var secuenciaArmada=armarEstructuraCadena();
-    verificarSeguridadPasword(secuenciaArmada);
-    //contarNumeros(secuenciaArmada);
-    //contarLetras(secuenciaArmada);
-    //contarCaracteresEspeciales(secuenciaArmada);
+    var infoPasswordAnalizada=verificarSeguridadPasword(secuenciaArmada);
+    mostrarInfoAnalisisPassword(infoPasswordAnalizada);
 }
 function armarEstructuraCadena(){
 
@@ -99,7 +99,6 @@ function contarNumeros(cadenaIngresada){
 
     var contAparicionesNumeros=0;
     var i=0; 
-    //analizarPass.innerHTML=(cadenaIngresada.join(" : "));
     
     while (i < cadenaIngresada.length){
          if(esNumero(cadenaIngresada[i]))
@@ -130,6 +129,22 @@ function contarLetras(cadenaIngresada){
 
 
 function verificarSeguridadPasword(secuenciaArmada){
+
+    var infoPassword={
+        cantTotalCaracteres : 0,
+        cantCaracteresEspeciales:0,
+        cantConsecutivos:0,
+        cantDistintos:0,
+        cantIguales:0,
+        
+        cantLetras:0,
+        cantLetrasMayusculas:0,
+        cantLetrasMinusculas:0,
+
+        cantNum:0,
+    }
+
+
     var i=0,cantIguales=0,cantConsecutivos=0,cantDistintos=0;
     var cantLetras=0,cantNum=0,cantCaracteresEspeciales=0;
     var cantLetrasMayusculas=0, cantLetrasMinusculas=0;
@@ -185,7 +200,7 @@ function verificarSeguridadPasword(secuenciaArmada){
 
     }
 
-    analizarUnTipoSecuencia(cantNum,cantLetras,cantCaracteres);
+  
     console.log("La cantidad de numeros es "+ cantNum );
     console.log("La cantidad de letras es "+ cantLetras );
     console.log("La cantidad de letras MAYUS es "+ cantLetrasMayusculas );
@@ -194,6 +209,21 @@ function verificarSeguridadPasword(secuenciaArmada){
     console.log("La cantidad de distintos es "+ cantDistintos );
     console.log("La cantidad de iguales es "+ cantIguales );
     console.log("La cantidad de consecutivos es "+ cantConsecutivos );
+
+    
+    infoPassword.cantTotalCaracteres = cantCaracteres;
+    infoPassword.cantCaracteresEspeciales= cantCaracteresEspeciales;
+    infoPassword.cantConsecutivos= cantConsecutivos;
+    infoPassword.cantDistintos= cantDistintos;
+    infoPassword.cantIguales= cantIguales;
+        
+    infoPassword.cantLetras= cantLetras;
+    infoPassword.cantLetrasMayusculas=cantLetrasMayusculas;
+    infoPassword.cantLetrasMinusculas=cantLetrasMinusculas;
+
+    infoPassword.cantNum=cantNum;
+
+    return infoPassword;
 }
 
 function sonIguales(elem1,elem2){
@@ -272,66 +302,160 @@ function esLetraMayuscula(caracter){
    return esMayus;
 }
 
-function analizarUnTipoSecuencia(cantNum,cantLetras,cantCaracteres){
+function analizarUnTipoSecuencia(cantNum,cantLetras,cantEspeciales,cantCaracteres){
+
+    var tipoSecuencia={
+        tipoLetras : false,
+        tipoNumeros:false,
+        tipoEspeciales:false,
+    }
+
     if(cantLetras == cantCaracteres)
     {
-        console.log("Solo se ingresaron letras");
+        tipoSecuencia.tipoLetras=true;
     }
     else
     {
         if(cantNum == cantCaracteres)
-            console.log("Solo se ingresaron numeros");
-
+            tipoSecuencia.tipoNumeros=true;
+        else
+            if(cantEspeciales == cantCaracteres)
+            tipoSecuencia.tipoEspeciales=true;
     }
 
+    return tipoSecuencia;
+
 }
 
+function guardarPasswordsIngresadas(passwordNueva){
+    
+    const almacenamiento= localStorage.getItem('Passwords ingresadas');
+    //var password= document.getElementById('inputPassword');
 
-function activarCookies(){
-
-    if( navigator.cookieEnabled == true ) {
-        alert("El uso de cookies está activado");
+    if(almacenamiento == null){
+        const pass_ingresadas=[];
+        pass_ingresadas.push(passwordNueva);
+        localStorage.setItem('Passwords ingresadas', JSON.stringify( pass_ingresadas));
     }
-    else {
-        alert("El uso de cookies está desactivado");
+    else{
+        const pass_saved=JSON.parse(almacenamiento);
+        if(pass_saved.length === 5){
+            pass_saved.shift(); //eliminamos la primer pass guardada
+        }
+        
+        pass_saved.push(passwordNueva);
+        localStorage.removeItem('Passwords ingresadas');
+        localStorage.setItem('Passwords ingresadas', JSON.stringify(pass_saved));
+        
+    }
+
+    //pass_saved[0] daria el primer elemento de las pass guardadas 
+
+    imprimirPassGuardadas();
+   
+
+}
+
+function imprimirPassGuardadas(){
+    const almacenamiento= localStorage.getItem('Passwords ingresadas');
+
+    const pass_saved=JSON.parse(almacenamiento);
+    if(pass_saved != null){
+
+        document.getElementById("primeraPass").innerHTML=pass_saved[0];
+        document.getElementById("segundaPass").innerHTML=pass_saved[1];
+        document.getElementById("terceraPass").innerHTML=pass_saved[2];
+        document.getElementById("cuartaPass").innerHTML=pass_saved[3];
+        document.getElementById("quintaPass").innerHTML=pass_saved[4];
+
     }
 }
 
-function creandoCookies(){
+function mostrarInfoAnalisisPassword(infoPassword){
 
-// Crear las Cookies:
-document.cookie = "miCookie1=APRENDERinformática_1; expires=Mon, 29 Jun 2020 11:12:13 UTC; path=/";
-document.cookie = "miCookie2=APRENDERinformática_2; expires=Mon, 29 Jun 2020 11:12:13 UTC; path=/";
-document.cookie = "miCookie3=APRENDERinformática_3; expires=Mon, 29 Jun 2020 11:12:13 UTC; path=/";
+    document.getElementById("cantTotalCaracteres").innerHTML=infoPassword.cantTotalCaracteres;
+    
+    document.getElementById("cantEspeciales").innerHTML=infoPassword.cantCaracteresEspeciales;
+    document.getElementById("cantConsecutivos").innerHTML=infoPassword.cantConsecutivos;
+    document.getElementById("cantDistintos").innerHTML=infoPassword.cantDistintos;
+    document.getElementById("cantIguales").innerHTML=infoPassword.cantIguales;
+        
+    document.getElementById("cantLetras").innerHTML=infoPassword.cantLetras;
+    document.getElementById("cantLetrasMayus").innerHTML=infoPassword.cantLetrasMayusculas;
+    document.getElementById("cantLetrasMinus").innerHTML=infoPassword.cantLetrasMinusculas;
 
-// Mostrar la cadena con las cookies:
-document.write( "COOKIES:" + document.cookie + "<p />" );
-// Obtener un array con el nombre y valor de una cookie guardados como cadena, en cada posición:
-var aCookies = document.cookie.split(";");
-// Variables auxiliares:
-var contador;
-var posicionSignoIgual;
-var nombreCookie;
-var valorCookie;
-for( contador=0; contador < aCookies.length; contador++ )
-{
-    // Obtenemos la posición en la que está el signo igual
-    // No lo ponemos fuera del bucle porque los nombres puede que no tengan la misma longitud
-    posicionSignoIgual = aCookies[contador].indexOf("=");
-    // Obtenemos el nombre de la cookie, eliminando espacios
-    nombreCookie = aCookies[contador].substring( 0, posicionSignoIgual ).replace(" ", "");
-    // Añadimos 1 'posicionSignoIgual' porque con substring() las posiciones de la cadena comienzan desde cero:
-    valorCookie = aCookies[contador].substring( posicionSignoIgual + 1 );
-    // Mostramos el valor
-    document.write( "[" + nombreCookie + "] = [" + valorCookie + "]<br />" );
-    console.log( "[" + nombreCookie + "] = [" + valorCookie + "]<br />" );
+    document.getElementById("cantNum").innerHTML=infoPassword.cantNum;
+
+    var tipoSecuencia=analizarUnTipoSecuencia(infoPassword.cantNum,infoPassword.cantLetras,
+        infoPassword.cantCaracteresEspeciales,infoPassword.cantTotalCaracteres);
+
+    mostrarInfoTipoSecuencia(tipoSecuencia);
+
+    var porcentajes=calcularPorcentaje(infoPassword);
+    mostrarPorcentaje(porcentajes);
+    
 }
 
+function mostrarInfoTipoSecuencia(tipoSecuencia){
+    if(tipoSecuencia.tipoNumeros == true)
+    document.getElementById("secTipoNums").innerHTML = ("Si");
+    else
+        document.getElementById("secTipoNums").innerHTML = ("No");
+    if(tipoSecuencia.tipoLetras == true)
+        document.getElementById("secTipoLetras").innerHTML = ("Si");
+    else
+        document.getElementById("secTipoLetras").innerHTML = ("No");
+    if(tipoSecuencia.tipoEspeciales == true)
+        document.getElementById("secTipoEspeciales").innerHTML = ("Si");
+    else
+        document.getElementById("secTipoEspeciales").innerHTML = ("No");
 }
 
-function admiCookies(){
-    activarCookies();
-    creandoCookies();
+function calcularPorcentaje(infoPassword){
+
+    var porcentajesPassword={
+        porcLetras : 0,
+        porcNumeros: 0,
+        porcEspeciales: 0,
+    }
+
+    var cantNums=infoPassword.cantNum,
+    cantLetras=infoPassword.cantLetras,
+    cantEspeciales=infoPassword.cantCaracteresEspeciales,
+    cantCaracteres=infoPassword.cantTotalCaracteres;
+    
+    porcentajesPassword.porcNumeros=porcentaje(cantNums,cantCaracteres);
+    porcentajesPassword.porcLetras=porcentaje(cantLetras,cantCaracteres);
+    porcentajesPassword.porcEspeciales=porcentaje(cantEspeciales,cantCaracteres);
+
+    return porcentajesPassword; 
+
 }
 
-admiCookies();
+function porcentaje(parcial,total){
+     var porcentajeCompleto=(parcial*100)/total;
+     
+     return dejarDosDigitosDecimales(porcentajeCompleto);
+}
+
+function dejarDosDigitosDecimales(number){
+    return (Math.round(number * 100)/100).toFixed(2);
+}
+function mostrarPorcentaje(porcentajes){
+   
+    document.getElementById("porcentajeEspeciales").innerHTML=(porcentajes.porcEspeciales+"%");
+    document.getElementById("porcentajeEspeciales").style.width=porcentajes.porcEspeciales+"%";
+    document.getElementById("porcentajeLetras").innerHTML=(porcentajes.porcLetras+"%");
+    document.getElementById("porcentajeLetras").style.width=porcentajes.porLetras+"%";       
+    document.getElementById("porcentajeNums").innerHTML=(porcentajes.porcNumeros+"%");
+    document.getElementById("porcentajeNums").style.width=porcentajes.porcNumeros+"%";       
+                
+                
+        
+    
+   
+    
+}
+
+
+
