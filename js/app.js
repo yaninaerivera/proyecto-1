@@ -441,15 +441,19 @@ function imprimirPassGuardadas(){
     const almacenamiento= localStorage.getItem('Passwords ingresadas');
 
     const pass_saved=JSON.parse(almacenamiento);
+   
     if(pass_saved != null){
-
-        document.getElementById("primeraPass").innerHTML=pass_saved[0];
-        document.getElementById("segundaPass").innerHTML=pass_saved[1];
-        document.getElementById("terceraPass").innerHTML=pass_saved[2];
-        document.getElementById("cuartaPass").innerHTML=pass_saved[3];
-        document.getElementById("quintaPass").innerHTML=pass_saved[4];
-
+        chequearExistenciaPassGuardada(pass_saved,0,"primeraPass");
+        chequearExistenciaPassGuardada(pass_saved,1,"segundaPass");
+        chequearExistenciaPassGuardada(pass_saved,2,"terceraPass");
+        chequearExistenciaPassGuardada(pass_saved,3,"cuartaPass");
+        chequearExistenciaPassGuardada(pass_saved,4,"quintaPass");
     }
+}
+
+function chequearExistenciaPassGuardada(pass_saved,pos,elemDoc){
+    if(pass_saved[pos] != null)
+    document.getElementById(elemDoc).innerHTML=pass_saved[pos];
 }
 
 function mostrarInfoAnalisisPassword(infoPassword){

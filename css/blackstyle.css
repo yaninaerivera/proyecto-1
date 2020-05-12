@@ -1,18 +1,42 @@
+
+#temaBody{
+  background-color:black;
+}
+
 li {
     list-style: none;
     padding-left: 16px;
+    margin:0 auto;
   }
+
+  #colorTema{
+
+    text-align: center;
+    margin:0 auto;
+  }
+  
+  #nombreEmpresa{
+    font-weight:bold;
+    font-size: 25px;
+    text-align:center;
+    align-content: center;
+    margin-left:20 px;
+    padding-left:20 px;
+  } 
+  
 
   #logo{
 
     width:100px;
     height:100px;
+    vertical-align: middle;
   }
   
   .navbar {
     background-color: #000000;
     font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #FFFFFF; 
+    text-align: center;
   }
   
   .navbar-brand{
@@ -31,41 +55,21 @@ li {
     color: #FFFFFF;
     
   }
-  #mensajePasswordEmpty{
-    opacity: 0.0;
-    background: #000000;
-    color: white;
-    margin-top:15px;
-    margin-bottom: 15px;
-    
-    
-  }
 
-
-
-#colorTema{
-
-  text-align: center;
-  margin:0 auto;
   
-}
-
- 
-
-
-
 #formPassword{
   align-items: left;
-  margin:15 px;
+  margin:15px;
   padding : 8px;
+  color:white;
+  font-size:17px;
 
 }
 
-
 #buttonPassword{
-  color:#FFFFFF;
+  color:#0c0a04;
   text-align: center;
-  background-color: #5F2F96;
+  background-color: #ffe400;
   align-content: left;
   border:none;
   cursor: pointer;
@@ -73,22 +77,31 @@ li {
 
 }
 
+  #mensajePasswordEmpty{
+    opacity: 0.0; 
+    color: white;
+    margin-top:15px;
+    margin-bottom: 15px;
+     
+  }
 
 #cardPorcentaje{ 
   padding : 0px;
   margin-bottom:25px;
 }
 
-#porcentajesTodosHeader{
-  background: #5B2993;
-  color:#FFFFFF;
+
+#porcentajesTodosHeader, #passIngresadasHeader{
+  background: #ffe400;
+  color: #0c0a04;
   text-align: left;
 }
 
-#porcentajesTodos{
-  background: #9D78C6;
+#porcentajesTodos, #passIngresadas{
+  background:  #0c0a04;
   
 }
+
 
 #colPorcentaje{
   display:inline-block;
@@ -105,16 +118,6 @@ li {
   vertical-align: baseline;
   justify-content: center;
   
-}
-
-#passIngresadasHeader{
-  background: #5B2993;
-  color:#FFFFFF;
-  text-align: left;
-}
-
-#passIngresadas{
-  background: #9D78C6;
 }
 
 #rowPassIngresadas{
@@ -140,195 +143,61 @@ li {
   height:125px;
   margin: 0 auto;
 }
+
 #seguridadPasswordHeader{
-background:#387A35;
-color: #FFFFFF;
-text-align: center;
-}
-
-#seguridadPassword{
-  background:#4CA949;
-  color:#FFFFFF;
+  background:#ffe400;
+  color: #0c0a04;
   text-align: center;
-  display:inline-block;
-
-}
-
-
-#colCantidades{
-  margin: 5px;
-  padding : 2px;
-}
-
-
-#cardCantidades{
-  width:260px;
-  height:110px;
-  margin: 0 auto;
+  }
   
-}
-
-#cardCantTotalCaracteres{
-  width:840px;
-  height:110px;
-  margin: 0 auto;
-}
-
-
-#cantTotalCaracteresHeader{
-  background: #145B76;
-  color:#FFFFFF;
-  text-align: center;
-}
-
-#cantTotalCaracteres{
-  background: #1B7192;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantNumHeader{
-  background: #5B2993;
-  color:#FFFFFF;
-  text-align: center;
+  #seguridadPassword{
+    background:#0c0a04;
+    color:#FFFFFF;
+    text-align: center;
+    display:inline-block;
+    font-size:22px;
   
-}
-#cantNum{
-  background: #7834C3;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
+  }
+
+  #colCantidades{
+    margin: 5px;
+    padding : 2px;
+  }
   
+  
+  #cardCantidades{
+    width:260px;
+    height:110px;
+    margin: 0 auto;
+    
+  }
+
+  #cardCantTotalCaracteres{
+   
+    height:110px;
+    margin: 0 auto;
+  }
+
+#cantTotalCaracteresHeader, #cantNumHeader, #cantEspecialesHeader, #cantLetrasHeader,
+#cantLetrasMayusHeader,#cantLetrasMinusHeader,#cantIgualesHeader,#cantConsecutivosHeader,
+#cantDistintosHeader,#secTipoNumsHeader, #secTipoLetrasHeader,#secTipoEspecialesHeader
+{
+  background: #ffe400;
+  color:#0c0a04;
+  text-align: center;
+  font-size:17px;
 }
 
-#cantEspecialesHeader{
-  background: #094293;
-  color:#FFFFFF;
-  text-align: center;
-}
-#cantEspeciales{
-  background: #0D59C6;
-  color:#FFFFFF;
+#cantTotalCaracteres, #cantNum, #cantEspeciales, #cantLetras, #cantLetrasMayus, #cantLetrasMinus,
+#cantIguales, #cantConsecutivos,#cantDistintos,#secTipoNums,#secTipoLetras,#secTipoEspeciales
+{
+  background: #0c0a04;
+  color:white;
   display:inline-block;
   text-align: center;
+  font-size:17px;
 }
 
-#cantLetrasHeader{
-  background: #0505A5;
-  color:#FFFFFF;
-  text-align: center;
-}
-#cantLetras{
-  background: #0000ff;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantLetrasMayusHeader{
-  background: #ADB20B;
-  color:#FFFFFF;
-  text-align: center;
-}
-
-#cantLetrasMayus{
-  background: #D2D63A;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantLetrasMinusHeader{
-  background: #006428;
-  color:#FFFFFF;
-  text-align: center;
-}
-
-#cantLetrasMinus{
-  background: #008f39;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantIgualesHeader{
-  background: #A25F1C;
-  color:#FFFFFF;
-  text-align: center;
-}
-
-#cantIguales{
-  background: #ff8000;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantConsecutivosHeader{
-  background: #9C0000;
-  color:#FFFFFF;
-  text-align: center;
-}
-
-#cantConsecutivos{
-  background: #ff0000;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantDistintosHeader{
-  background: #2271b3;
-  color:#FFFFFF;
-  text-align: center;
-}
-
-#cantDistintos{
-  background: #00aae4;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
-}
-
-#secTipoNumsHeader{
-  background: #ff0080;
-  color:#FFFFFF;
-  text-align: center;
-}
-
-#secTipoNums{
-  background: #FE3198;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
-}
-
-#secTipoLetrasHeader{
-  background: #804000;
-  color:#FFFFFF;
-  text-align: center;
-}
-
-#secTipoLetras{
-  background: #AF5800;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
-}
-
-#secTipoEspecialesHeader{
-  background: #327C76;
-  color:#FFFFFF;
-  text-align: center;
-}
-
-#secTipoEspeciales{
-  background: #5dc1b9;
-  color:#FFFFFF;
-  display:inline-block;
-  text-align: center;
-}
 
 #cardAclaraciones{ 
   padding : 0px;
@@ -336,13 +205,13 @@ text-align: center;
 }
 
 #aclaracionesHeader{
-  background: #1E731B;
-  color:#FFFFFF;
+  background: #ffe400;
+  color:#0c0a04;
   text-align: left;
 }
 
 #aclaraciones{
-  background: #29A025;
+  background: #0c0a04;
   color:#FFFFFF;
   display:inline-block;
   text-align: left;
