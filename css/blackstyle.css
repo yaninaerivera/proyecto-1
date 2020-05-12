@@ -3,6 +3,12 @@ li {
     padding-left: 16px;
   }
 
+  #logo{
+
+    width:100px;
+    height:100px;
+  }
+  
   .navbar {
     background-color: #000000;
     font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;

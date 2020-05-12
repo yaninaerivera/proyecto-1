@@ -4,14 +4,20 @@ li {
   }
 
  
+#logo{
+
+  width:100px;
+  height:100px;
+}
+
 .navbar {
-  background-color: #e3f2fd;
+  background-color: #5F2F96;
   
 }
 
 .navbar-brand{
-  background-color: #e3f2fd;
-  color: #000000;
+  background-color: #5F2F96;
+  color: #FFFFFF;
 }
 
 #botonWhite{
@@ -28,146 +34,9 @@ li {
 
 #mensajePasswordEmpty{
   opacity: 0.0;
-  background: #FFFFFF;
-  color: white;
+  color: red;
   
 }
-
-
-#cantTotalCaracteresHeader{
-  background: #f3218a;
-  box-shadow: gray;
-  color:white;
-  text-align: center;
-}
-
-
-
-#cantTotalCaracteres{
-  background: #c00798;
-  box-shadow: gray;
-  color:white;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantNumHeader{
-  background: #736aee;
-  box-shadow: gray;
-  color:white;
-  text-align: center;
-}
-#cantNum{
-  background: #07049c;
-  box-shadow: gray;
-  color:white;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantEspecialesHeader{
-  background: #736aee;
-  box-shadow: gray;
-  color:white;
-  text-align: center;
-}
-#cantEspeciales{
-  background: #07049c;
-  box-shadow: gray;
-  color:white;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantLetrasHeader{
-  background: #736aee;
-  box-shadow: gray;
-  color:white;
-  text-align: center;
-}
-#cantLetras{
-  background: #07049c;
-  box-shadow: gray;
-  color:white;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantLetrasMayusHeader{
-  background: #4e73df;
-  box-shadow: gray;
-  color:white;
-  text-align: center;
-}
-
-#cantLetrasMayus{
-  background: #4e73df;
-  box-shadow: gray;
-  color:white;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantLetrasMinusHeader{
-  background: #4e73df;
-  box-shadow: gray;
-  color:white;
-  text-align: center;
-}
-
-#cantLetrasMinus{
-  background: #4e73df;
-  box-shadow: gray;
-  color:white;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantIgualesHeader{
-  background: #4e73df;
-  box-shadow: gray;
-  color:white;
-  text-align: center;
-}
-
-#cantIguales{
-  background: #4e73df;
-  box-shadow: gray;
-  color:white;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantConsecutivosHeader{
-  background: #4e73df;
-  box-shadow: gray;
-  color:white;
-  text-align: center;
-}
-
-#cantConsecutivos{
-  background: #4e73df;
-  box-shadow: gray;
-  color:white;
-  display:inline-block;
-  text-align: center;
-}
-
-#cantDistintosHeader{
-  background: #4e73df;
-  box-shadow: gray;
-  color:white;
-  text-align: center;
-}
-
-#cantDistintos{
-  background: #4e73df;
-  box-shadow: gray;
-  color:white;
-  display:inline-block;
-  text-align: center;
-}
-
 
 
 #porcentajeEspeciales{
@@ -176,7 +45,7 @@ li {
   background-color: green;
   text-align: center; /* To center it horizontally (if you want) */
   line-height: center; /* To center it vertically */
-  color: white;
+  color: #FFFFFF;
   
   justify-content: center;
   
@@ -189,4 +58,210 @@ li {
   vertical-align: baseline;
   justify-content: center;
   
+}
+
+
+#colSeguridadPassword{
+  
+  margin-top: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding : 5px;
+}
+
+#cardSeguridadPassword{
+  
+  width:400px;
+  height:125px;
+  margin: 0 auto;
+}
+#seguridadPasswordHeader{
+background:#387A35;
+color: #FFFFFF;
+text-align: center;
+}
+
+#seguridadPassword{
+  background:#4CA949;
+  color:#FFFFFF;
+  text-align: center;
+  display:inline-block;
+
+}
+
+
+#colCantidades{
+  margin: 5px;
+  padding : 2px;
+}
+
+
+#cardCantidades{
+  width:260px;
+  height:110px;
+  margin: 0 auto;
+  
+}
+
+#cardCantTotalCaracteres{
+  width:840px;
+  height:110px;
+  margin: 0 auto;
+}
+
+
+#cantTotalCaracteresHeader{
+  background: #145B76;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantTotalCaracteres{
+  background: #1B7192;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantNumHeader{
+  background: #5B2993;
+  color:#FFFFFF;
+  text-align: center;
+  
+}
+#cantNum{
+  background: #7834C3;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+  
+}
+
+#cantEspecialesHeader{
+  background: #094293;
+  color:#FFFFFF;
+  text-align: center;
+}
+#cantEspeciales{
+  background: #0D59C6;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantLetrasHeader{
+  background: #0505A5;
+  color:#FFFFFF;
+  text-align: center;
+}
+#cantLetras{
+  background: #0000ff;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantLetrasMayusHeader{
+  background: #ADB20B;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantLetrasMayus{
+  background: #D2D63A;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantLetrasMinusHeader{
+  background: #006428;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantLetrasMinus{
+  background: #008f39;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantIgualesHeader{
+  background: #A25F1C;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantIguales{
+  background: #ff8000;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantConsecutivosHeader{
+  background: #9C0000;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantConsecutivos{
+  background: #ff0000;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantDistintosHeader{
+  background: #2271b3;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantDistintos{
+  background: #00aae4;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#secTipoNumsHeader{
+  background: #ff0080;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#secTipoNums{
+  background: #FE3198;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#secTipoLetrasHeader{
+  background: #804000;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#secTipoLetras{
+  background: #AF5800;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#secTipoEspecialesHeader{
+  background: #327C76;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#secTipoEspeciales{
+  background: #5dc1b9;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
 }

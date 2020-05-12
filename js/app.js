@@ -1,30 +1,74 @@
 imprimirPassGuardadas();
 
+setEstiloGuardado();
+
+function setEstiloGuardado(){
+
+    var colorEstilo= localStorage.getItem('Estilo Boton');
+
+    if(colorEstilo == null){
+        cambiarAEstiloBlanco();
+    }
+    else{
+        if(colorEstilo == "Black")
+            cambiarAEstiloNegro();
+        else
+            cambiarAEstiloBlanco();
+
+    }
+    
+}
+
 function mostrarMensajePassVacia(){
-   document.getElementById('mensajePasswordEmpty').style.background="red";
+   
    document.getElementById('mensajePasswordEmpty').style.opacity="1.0";
+   document.getElementById('mensajePasswordEmpty').innerHTML= ("No se ha ingresado contraseña.Por favor, ingrese una contraseña");
 }
 
 function quitarMensajePassVacia(){
 
     document.getElementById('mensajePasswordEmpty').style.opacity="0.0";
-    
+
+    document.getElementById('mensajePasswordEmpty').innerHTML= ("No se ha ingresado contraseña.Por favor, vuelva a ingresar la contraseña");
+    /*
     if (document.getElementById('mensajePasswordEmpty').href == 'css/blackstyle.css'){
         document.getElementById('mensajePasswordEmpty').style.background="black";
     }
     else
     document.getElementById('mensajePasswordEmpty').style.background="white";
+    */
 }
 
 function cambiarAEstiloNegro(){
     document.getElementById('estilos').href = 'css/blackstyle.css';
+    guardarBotonEstilo("Black");
     
 }
 
 function cambiarAEstiloBlanco(){
     document.getElementById('estilos').href = 'css/whitestyle.css';
+    guardarBotonEstilo("White");
 
 }
+
+function guardarBotonEstilo(color){
+
+    const almacenamiento= localStorage.getItem('Estilo Boton');
+    
+
+    if(almacenamiento == null){
+        const estilo_saved=[];
+        //estilo_saved.push("Black");
+        localStorage.setItem('Estilo Boton', color);
+    }
+    else{
+        localStorage.removeItem('Estilo Boton');
+        localStorage.setItem('Estilo Boton',color);
+        
+    }
+
+}
+
 
 document.getElementById("botonWhite").onclick = function(){
     cambiarAEstiloBlanco();
@@ -48,20 +92,55 @@ function mostrarContrasenia(){
 function analizarContrasenia(){
     
     var password = document.getElementById('inputPassword');
-    guardarPasswordsIngresadas(password.value);
-    var error = document.getElementById('error');
+   
+    
 
     if(password.value === null || password.value === '' ){
-       // error.innerHTML = ("La contrasenia ingresada es vacia");
+       
+        limpiarVisualizacionAnalisisPassword();
         mostrarMensajePassVacia();
+        
     }
     else{
-        //error.innerHTML = (" se ha ingresado una contrasenia valida ");
+        
         quitarMensajePassVacia();
+        guardarPasswordsIngresadas(password.value);
         analizarSecuencia();
     }
     
     return false;
+}
+
+function limpiarVisualizacionAnalisisPassword(){
+
+    document.getElementById("cantTotalCaracteres").innerHTML="";
+    
+    document.getElementById("cantEspeciales").innerHTML="";
+    document.getElementById("cantConsecutivos").innerHTML="";
+    document.getElementById("cantDistintos").innerHTML="";
+    document.getElementById("cantIguales").innerHTML="";
+        
+    document.getElementById("cantLetras").innerHTML="";
+    document.getElementById("cantLetrasMayus").innerHTML="";
+    document.getElementById("cantLetrasMinus").innerHTML="";
+
+    document.getElementById("cantNum").innerHTML="";
+
+   
+    document.getElementById("secTipoNums").innerHTML = ("");
+    document.getElementById("secTipoLetras").innerHTML = ("");
+    document.getElementById("secTipoEspeciales").innerHTML = ("");
+
+    document.getElementById("seguridadPassword").innerHTML=("");
+
+    
+    //document.getElementById("porcentajeEspeciales").innerHTML=("0%");
+    document.getElementById("porcentajeEspeciales").style.width="0%";
+    //document.getElementById("porcentajeLetras").innerHTML=("0%");
+    document.getElementById("porcentajeLetras").style.width="0%";       
+    //document.getElementById("porcentajeNums").innerHTML=("0%"); 
+    document.getElementById("porcentajeNums").style.width="0%";   
+    
 }
 
 
@@ -79,6 +158,7 @@ function analizarSecuencia(){
     var secuenciaArmada=armarEstructuraCadena();
     var infoPasswordAnalizada=verificarSeguridadPasword(secuenciaArmada);
     mostrarInfoAnalisisPassword(infoPasswordAnalizada);
+    
 }
 function armarEstructuraCadena(){
 
@@ -155,13 +235,13 @@ function verificarSeguridadPasword(secuenciaArmada){
         }
         else{
             if(sonConsecutivos(secuenciaArmada[i],secuenciaArmada[i+1])){
-                console.log("Los elementos " + secuenciaArmada[i] + secuenciaArmada[i+1]+ " son consecutivos");
+                //console.log("Los elementos " + secuenciaArmada[i] + secuenciaArmada[i+1]+ " son consecutivos");
                 cantConsecutivos++;
             }
             else{
                 //son distintos ??? NO SE SI DEBERIA CONTARLO
                 cantDistintos++;
-                console.log("Los elementos " + secuenciaArmada[i] + secuenciaArmada[i+1]+ " son distintos");
+                //console.log("Los elementos " + secuenciaArmada[i] + secuenciaArmada[i+1]+ " son distintos");
             }
 
         }
@@ -209,6 +289,7 @@ function verificarSeguridadPasword(secuenciaArmada){
     console.log("La cantidad de distintos es "+ cantDistintos );
     console.log("La cantidad de iguales es "+ cantIguales );
     console.log("La cantidad de consecutivos es "+ cantConsecutivos );
+
 
     
     infoPassword.cantTotalCaracteres = cantCaracteres;
@@ -373,6 +454,23 @@ function imprimirPassGuardadas(){
 
 function mostrarInfoAnalisisPassword(infoPassword){
 
+    mostrarCantidadesAnalisis(infoPassword);
+
+    var tipoSecuencia=analizarUnTipoSecuencia(infoPassword.cantNum,infoPassword.cantLetras,
+        infoPassword.cantCaracteresEspeciales,infoPassword.cantTotalCaracteres);
+
+    mostrarInfoTipoSecuencia(tipoSecuencia);
+
+    var porcentajes=calcularPorcentaje(infoPassword);
+    mostrarPorcentaje(porcentajes);
+
+    var escala=determinarSeguridadPassword(calculoSeguridadPassword(infoPassword));
+    mostrarSeguridadPassword(escala);
+    
+}
+
+function mostrarCantidadesAnalisis(infoPassword){
+
     document.getElementById("cantTotalCaracteres").innerHTML=infoPassword.cantTotalCaracteres;
     
     document.getElementById("cantEspeciales").innerHTML=infoPassword.cantCaracteresEspeciales;
@@ -385,15 +483,6 @@ function mostrarInfoAnalisisPassword(infoPassword){
     document.getElementById("cantLetrasMinus").innerHTML=infoPassword.cantLetrasMinusculas;
 
     document.getElementById("cantNum").innerHTML=infoPassword.cantNum;
-
-    var tipoSecuencia=analizarUnTipoSecuencia(infoPassword.cantNum,infoPassword.cantLetras,
-        infoPassword.cantCaracteresEspeciales,infoPassword.cantTotalCaracteres);
-
-    mostrarInfoTipoSecuencia(tipoSecuencia);
-
-    var porcentajes=calcularPorcentaje(infoPassword);
-    mostrarPorcentaje(porcentajes);
-    
 }
 
 function mostrarInfoTipoSecuencia(tipoSecuencia){
@@ -425,8 +514,14 @@ function calcularPorcentaje(infoPassword){
     cantCaracteres=infoPassword.cantTotalCaracteres;
     
     porcentajesPassword.porcNumeros=porcentaje(cantNums,cantCaracteres);
+
+    console.log("Porcentaje de Nums es "+porcentajesPassword.porcNumeros);
     porcentajesPassword.porcLetras=porcentaje(cantLetras,cantCaracteres);
+
+    console.log("Porcentaje de Letras es "+porcentajesPassword.porcLetras);
     porcentajesPassword.porcEspeciales=porcentaje(cantEspeciales,cantCaracteres);
+
+    console.log("Porcentaje de Especiales es "+porcentajesPassword.porcEspeciales);
 
     return porcentajesPassword; 
 
@@ -446,16 +541,77 @@ function mostrarPorcentaje(porcentajes){
     document.getElementById("porcentajeEspeciales").innerHTML=(porcentajes.porcEspeciales+"%");
     document.getElementById("porcentajeEspeciales").style.width=porcentajes.porcEspeciales+"%";
     document.getElementById("porcentajeLetras").innerHTML=(porcentajes.porcLetras+"%");
-    document.getElementById("porcentajeLetras").style.width=porcentajes.porLetras+"%";       
+    document.getElementById("porcentajeLetras").style.width=porcentajes.porcLetras+"%";       
     document.getElementById("porcentajeNums").innerHTML=(porcentajes.porcNumeros+"%");
-    document.getElementById("porcentajeNums").style.width=porcentajes.porcNumeros+"%";       
-                
-                
-        
-    
-   
+    document.getElementById("porcentajeNums").style.width=porcentajes.porcNumeros+"%";                  
     
 }
+
+function calculoSeguridadPassword(infoPassword){
+
+    var promedio=0;
+
+     var cantTotalCaracteres=infoPassword.cantTotalCaracteres;
+     promedio = promedio + cantTotalCaracteres*4;
+     promedio= promedio + ( (cantTotalCaracteres - infoPassword.cantLetrasMayusculas)*2 );
+     promedio= promedio + ( (cantTotalCaracteres - infoPassword.cantLetrasMinusculas)*2 );
+     promedio = promedio + infoPassword.cantNum*4;
+     promedio = promedio + infoPassword.cantCaracteresEspeciales*6;   
+
+
+
+     promedio= promedio - (infoPassword.cantConsecutivos*2);
+     promedio= promedio - (infoPassword.cantIguales*2);
+
+     var tipoSecuencia=analizarUnTipoSecuencia(infoPassword.cantNum,infoPassword.cantLetras,
+        infoPassword.cantCaracteresEspeciales,infoPassword.cantTotalCaracteres);
+     
+    if(tipoSecuencia.tipoLetras == true){
+        promedio= promedio - infoPassword.cantLetras;
+    }    
+    if(tipoSecuencia.tipoNumeros == true){
+        promedio= promedio - infoPassword.cantNum;
+    }
+
+    return promedio;
+     
+}
+
+
+
+function determinarSeguridadPassword(promedioPassword){
+
+    var promedio= dejarDosDigitosDecimales(promedioPassword);
+    var escalaItensidad="Muy débil";
+    if(promedio >=0 && promedio <= 30){
+        escalaItensidad="Muy débil";
+    }
+    else
+    {
+        if(promedio >30 && promedio <= 50){
+            escalaItensidad="Débil";
+        }
+        else
+        {
+            if(promedio >50 && promedio <= 75){
+                escalaItensidad="Fuerte";
+            }
+            else
+                escalaItensidad="Muy fuerte";
+
+        }
+    }
+
+    return escalaItensidad;
+
+}
+
+function mostrarSeguridadPassword(escalaItensidad){
+
+    document.getElementById("seguridadPassword").innerHTML=escalaItensidad;
+
+}
+
 
 
 

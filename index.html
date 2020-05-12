@@ -18,20 +18,20 @@
     <header> 
         <nav class="navbar relative " >
             <span class="navbar-brand mb-0 h1">
-              <img src="" width="30" height="30" class="d-inline-block align-middle" alt="">
+              <img src="img/candado_negro.png" id="logo" class="d-inline-block align-middle" alt="">
               My Password . . .
             </span>
       
             <div>
               <ul class="navbar ">
                 <li>
-                  Themes 
+                  Temas 
                 </li>
                 <li>
-                <button id="botonWhite" class="btn" type="button">White</button>
+                <button id="botonWhite" class="btn" type="button">Blanco</button>
                 </li>  
                 <li>
-                <button id="botonBlack" class="btn" type="button">Black</button>
+                <button id="botonBlack" class="btn" type="button">Negro</button>
                 </li>
               </ul>
             </div>
@@ -43,7 +43,7 @@
         <div class="col-sm">
           <form action="" method="get" id="formPassword"  >
               <div class="form-group">
-                <label for="inputPassword">Password</label>
+                <label for="inputPassword">Contraseña</label>
                 <input type="password" class="form-control" id="inputPassword">
               </div>
               <div>
@@ -53,25 +53,43 @@
               </div>
               <div class="form-group form-check">
                 <input type="checkbox" onclick='mostrarContrasenia()' class="form-check-input" id="checkboxPassword">
-                <label class="form-check-label" for="checkboxPassword">Show password</label>
+                <label class="form-check-label" for="checkboxPassword">Mostrar la contraseña</label>
               </div>
-              <button type="submit" onclick='return analizarContrasenia()' class="btn btn-primary" id="buttonPassword">Submit</button>
+              <button type="submit" onclick='return analizarContrasenia()' class="btn btn-primary" id="buttonPassword">Analizar</button>
 
               
           </form>
-        </div>  <!--1 fila 1 columna-->
+        </div>  <!--0 fila 1 columna-->
       
-      </div> <!--Termina primera fila-->
+      </div> <!--Termina cero fila-->
+
+      <div class="row"> <!--1 fila 1 columna-->
+
+        <div class="col">
+
+          <div class="col" id="colSeguridadPassword">
+            <div class="card" id="cardSeguridadPassword">
+                <div class="card-header" id="seguridadPasswordHeader" >Seguridad de la contraseña</div>
+                <div class="card-body" id="seguridadPassword">
+                 </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div><!--END 1 fila 1 columna-->
+
       
       
       <div class="row"> <!--2 fila-->
         
-        <div class=col> <!--2 fila 1 columna-->
+        <div class="col"> <!--2 fila 1 columna-->
 
             <div class="row"> <!--2 fila 1 columna 1 fila-->
               
-              <div class="col-12">
-                <div class="card">
+              <div class="col" id="colCantTotalCaracteres">
+                <div class="card" id="cardCantTotalCaracteres">
                     <div class="card-header" id="cantTotalCaracteresHeader" >Total de Caracteres</div>
                     <div class="card-body" id="cantTotalCaracteres">
                      </div>
@@ -83,16 +101,16 @@
 
             <div class="row"> <!--2 fila 1 columna 2 fila-->
 
-              <div class="col-4">
-                <div class="card">
+              <div class="col" id="colCantidades">
+                <div class="card" id="cardCantidades">
                     <div class="card-header" id="cantNumHeader" >Cantidad de Numeros</div>
                     <div class="card-body" id="cantNum">
                      </div>
                 </div>
               </div>
 
-              <div class="col-4">
-                <div class="card">
+              <div class="col" id="colCantidades">
+                <div class="card" id="cardCantidades">
                     <div class="card-header" id="cantEspecialesHeader" >Cantidad de Especiales</div>
                     <div class="card-body" id="cantEspeciales">
                      </div>
@@ -100,8 +118,8 @@
               </div>
 
 
-              <div class="col-4">
-                <div class="card">
+              <div class="col" id="colCantidades">
+                <div class="card" id="cardCantidades">
                     <div class="card-header" id="cantLetrasHeader" >Cantidad de Letras</div>
                     <div class="card-body" id="cantLetras">
                      </div>
@@ -109,8 +127,8 @@
               </div>
 
 
-              <div class="col-4">
-                <div class="card">
+              <div class="col" id="colCantidades">
+                <div class="card" id="cardCantidades">
                     <div class="card-header" id="cantLetrasMinusHeader" >Cantidad de Minusculas</div>
                     <div class="card-body" id="cantLetrasMinus">
                      </div>
@@ -118,8 +136,8 @@
               </div>
 
 
-              <div class="col-4">
-                <div class="card">
+              <div class="col-4" id="colCantidades">
+                <div class="card" id="cardCantidades" >
                     <div class="card-header" id="cantLetrasMayusHeader" >Cantidad de Mayusculas</div>
                     <div class="card-body" id="cantLetrasMayus">
               
@@ -128,8 +146,8 @@
                 </div>
               </div>
 
-              <div class="col-4">
-                <div class="card">
+              <div class="col" id="colCantidades">
+                <div class="card" id="cardCantidades">
                     <div class="card-header" id="cantIgualesHeader" >Cantidad de Iguales</div>
                     <div class="card-body" id="cantIguales">
               
@@ -137,8 +155,8 @@
                 </div>
               </div>
 
-              <div class="col-4">
-                <div class="card">
+              <div class="col" id="colCantidades">
+                <div class="card" id="cardCantidades">
                     <div class="card-header" id="cantConsecutivosHeader" >Cantidad de Consecutivos</div>
                     <div class="card-body" id="cantConsecutivos">
               
@@ -146,8 +164,9 @@
                 </div>
               </div>
 
-              <div class="col-4">
-                <div class="card">
+
+              <div class="col" id="colCantidades">
+                <div class="card" id="cardCantidades">
                     <div class="card-header" id="cantDistintosHeader" >Cantidad de Distintos</div>
                     <div class="card-body" id="cantDistintos">
 
@@ -155,8 +174,8 @@
                 </div>
               </div>
 
-              <div class="col-4">
-                <div class="card">
+              <div class="col" id="colCantidades">
+                <div class="card" id="cardCantidades">
                     <div class="card-header" id="secTipoNumsHeader" >Secuencia de Numeros</div>
                     <div class="card-body" id="secTipoNums">
 
@@ -164,8 +183,8 @@
                 </div>
               </div>
 
-              <div class="col-4">
-                <div class="card">
+              <div class="col" id="colCantidades">
+                <div class="card" id="cardCantidades">
                     <div class="card-header" id="secTipoLetrasHeader" >Secuencia de Letras</div>
                     <div class="card-body" id="secTipoLetras">
 
@@ -173,8 +192,8 @@
                 </div>
               </div>
 
-              <div class="col-4">
-                <div class="card">
+              <div class="col" id="colCantidades">
+                <div class="card" id="cardCantidades">
                     <div class="card-header" id="secTipoEspecialesHeader" >Secuencia de Especiales</div>
                     <div class="card-body" id="secTipoEspeciales">
 
@@ -186,7 +205,7 @@
 
         </div> <!-- END 2 fila 1 columna-->
         
-        <div class=col> <!--2 fila 2 columna-->
+        <div class="col"> <!--2 fila 2 columna-->
 
           <div class="row-12"> <!--2 fila 2 columna 1 fila-->
             <div class="card">
@@ -289,11 +308,36 @@
 
       <div class="row"> <!-- Tercera fila-->
 
-        <div class="col"> <!--3 fila 1 columna-->
+        <div class="col-12"> <!--3 fila 1 columna-->
 
-
-       
           
+            <div class="card">
+                <div class="card-header" id="aclaracionesHeader" > Aclaraciones</div>
+                <div class="card-body" id="aclaraciones">
+
+                  <p>
+                      Los caracteres son los numeros, letras y simbolos ( ! #  %  & ; , .). Los simbolos son todo aquello
+                      que no son numeros y no son letras.
+                      La cantidad de caracteres se refiere a la longitud de la contraseña ingresada.
+                      Los caraceteres especiales son aquellos que definimos previamente como simbolos.
+                      La cantidad de iguales es la cantidad de veces que se repite un caracter de forma consecutiva.
+                      Por ejemplo si ingresamos la siguiente contraseña:
+                      aaa  en este caso hay dos cantidades de iguales porque entre el primer par de aa es una cantidad de iguales
+                      y en el segundo par hay otra cantidad de iguales. En total hay dos cantidades de iguales.
+                      
+                      La cantidad de distintos son la cantidad de pares de caracteres que son diferentes entre si.
+
+                      La cantidad de consecutivos son la cantidad de pares consecutivos. En el caso de los numeros, seria los numeros
+                      consecutivos. En el caso de las letras, seria son letras en orden alfabetico pero teniendo en cuenta 
+                      abc son letras consecutivas pero aez no son consecutivas.
+
+
+                  </p>
+
+                 </div>
+            </div>
+          
+
 
         </div> <!--END 3 fila 1 columna -->
 
