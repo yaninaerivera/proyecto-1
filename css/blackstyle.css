@@ -35,6 +35,316 @@ li {
     opacity: 0.0;
     background: #000000;
     color: white;
+    margin-top:15px;
+    margin-bottom: 15px;
+    
     
   }
+
+
+
+#colorTema{
+
+  text-align: center;
+  margin:0 auto;
+  
+}
+
+ 
+
+
+
+#formPassword{
+  align-items: left;
+  margin:15 px;
+  padding : 8px;
+
+}
+
+
+#buttonPassword{
+  color:#FFFFFF;
+  text-align: center;
+  background-color: #5F2F96;
+  align-content: left;
+  border:none;
+  cursor: pointer;
+  vertical-align: middle;
+
+}
+
+
+#cardPorcentaje{ 
+  padding : 0px;
+  margin-bottom:25px;
+}
+
+#porcentajesTodosHeader{
+  background: #5B2993;
+  color:#FFFFFF;
+  text-align: left;
+}
+
+#porcentajesTodos{
+  background: #9D78C6;
+  
+}
+
+#colPorcentaje{
+  display:inline-block;
+  padding:0px;
+  margin: 10px;
+  color:#FFFFFF;
+  text-align: left;
+}
+
+#progress{
+  width:100%;
+  height:60px;
+  background-color: #FFFFFF;
+  vertical-align: baseline;
+  justify-content: center;
+  
+}
+
+#passIngresadasHeader{
+  background: #5B2993;
+  color:#FFFFFF;
+  text-align: left;
+}
+
+#passIngresadas{
+  background: #9D78C6;
+}
+
+#rowPassIngresadas{
+ 
+  padding:0px;
+  margin: 0px;
+  color:#FFFFFF;
+  text-align: left;
+}
+
+#colSeguridadPassword{
+  
+  margin-top: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding : 5px;
+}
+
+#cardSeguridadPassword{
+  
+  width:400px;
+  height:125px;
+  margin: 0 auto;
+}
+#seguridadPasswordHeader{
+background:#387A35;
+color: #FFFFFF;
+text-align: center;
+}
+
+#seguridadPassword{
+  background:#4CA949;
+  color:#FFFFFF;
+  text-align: center;
+  display:inline-block;
+
+}
+
+
+#colCantidades{
+  margin: 5px;
+  padding : 2px;
+}
+
+
+#cardCantidades{
+  width:260px;
+  height:110px;
+  margin: 0 auto;
+  
+}
+
+#cardCantTotalCaracteres{
+  width:840px;
+  height:110px;
+  margin: 0 auto;
+}
+
+
+#cantTotalCaracteresHeader{
+  background: #145B76;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantTotalCaracteres{
+  background: #1B7192;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantNumHeader{
+  background: #5B2993;
+  color:#FFFFFF;
+  text-align: center;
+  
+}
+#cantNum{
+  background: #7834C3;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+  
+}
+
+#cantEspecialesHeader{
+  background: #094293;
+  color:#FFFFFF;
+  text-align: center;
+}
+#cantEspeciales{
+  background: #0D59C6;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantLetrasHeader{
+  background: #0505A5;
+  color:#FFFFFF;
+  text-align: center;
+}
+#cantLetras{
+  background: #0000ff;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantLetrasMayusHeader{
+  background: #ADB20B;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantLetrasMayus{
+  background: #D2D63A;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantLetrasMinusHeader{
+  background: #006428;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantLetrasMinus{
+  background: #008f39;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantIgualesHeader{
+  background: #A25F1C;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantIguales{
+  background: #ff8000;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantConsecutivosHeader{
+  background: #9C0000;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantConsecutivos{
+  background: #ff0000;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cantDistintosHeader{
+  background: #2271b3;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#cantDistintos{
+  background: #00aae4;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#secTipoNumsHeader{
+  background: #ff0080;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#secTipoNums{
+  background: #FE3198;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#secTipoLetrasHeader{
+  background: #804000;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#secTipoLetras{
+  background: #AF5800;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#secTipoEspecialesHeader{
+  background: #327C76;
+  color:#FFFFFF;
+  text-align: center;
+}
+
+#secTipoEspeciales{
+  background: #5dc1b9;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: center;
+}
+
+#cardAclaraciones{ 
+  padding : 0px;
+  margin-top:25px;
+}
+
+#aclaracionesHeader{
+  background: #1E731B;
+  color:#FFFFFF;
+  text-align: left;
+}
+
+#aclaraciones{
+  background: #29A025;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: left;
+}
 

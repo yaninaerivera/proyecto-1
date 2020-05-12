@@ -22,7 +22,7 @@ function setEstiloGuardado(){
 function mostrarMensajePassVacia(){
    
    document.getElementById('mensajePasswordEmpty').style.opacity="1.0";
-   document.getElementById('mensajePasswordEmpty').innerHTML= ("No se ha ingresado contraseña.Por favor, ingrese una contraseña");
+   document.getElementById('mensajePasswordEmpty').innerHTML= ("No se ha ingresado contraseña. Por favor, ingrese una contraseña");
 }
 
 function quitarMensajePassVacia(){
@@ -614,4 +614,27 @@ function mostrarSeguridadPassword(escalaItensidad){
 
 
 
+function mostrarAclaraciones(){
+    document.getElementById('aclaraciones').innerHTML=
+    "<p>"+
+     "<ol>"+
+        "<li>Los caracteres son los numeros, letras y simbolos ( ! #  %  & ; , .). Los simbolos son todo aquello "+
+        "que no son numeros y no son letras. </li>"+
+        "<li>La cantidad de caracteres se refiere a la longitud de la contraseña ingresada. </li>"+
+        "<li> Los caraceteres especiales son aquellos que definimos previamente como simbolos.</li>"+
+        "<li>La cantidad de iguales es la cantidad de veces que se repite un caracter de forma consecutiva.<br>"+
+         " Por ejemplo si ingresamos la siguiente contraseña:<br>aaa  en este caso hay dos cantidades de iguales "+
+          "porque entre el primer par de aa es una cantidad de iguales y en el segundo par hay otra cantidad de iguales."+
+          " En total hay dos cantidades de iguales.</li>"+
+        "<li>La cantidad de distintos son la cantidad de pares de caracteres que son diferentes entre si.</li>"+
+        "<li>La cantidad de consecutivos son la cantidad de pares consecutivos. En el caso de los numeros, seria los numeros "+
+        "consecutivos. En el caso de las letras, seria son letras en orden alfabetico pero teniendo en cuenta "+
+        "abc son letras consecutivas pero aez no son consecutivas.</li>"+
+
+    "</ol>"+
+    "</p>";
+  
+}
+
+mostrarAclaraciones();
 

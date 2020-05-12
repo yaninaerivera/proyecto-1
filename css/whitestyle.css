@@ -1,28 +1,42 @@
 li {
     list-style: none;
     padding-left: 16px;
+    margin:0 auto;
+   
   }
+#colorTema{
+
+  text-align: center;
+  margin:0 auto;
+  
+}
 
  
 #logo{
 
   width:100px;
   height:100px;
+ 
 }
 
 .navbar {
   background-color: #5F2F96;
+  color: #FFFFFF;
+  text-align: center;
   
 }
 
 .navbar-brand{
   background-color: #5F2F96;
   color: #FFFFFF;
+  text-align: center;
+  
 }
 
 #botonWhite{
   background-color: #FFFFFF;
   border-color: #000000;
+  color:#000000;
 }
 
 #botonBlack{
@@ -32,23 +46,57 @@ li {
   
 }
 
-#mensajePasswordEmpty{
-  opacity: 0.0;
-  color: red;
-  
+
+#formPassword{
+  align-items: left;
+  margin:15 px;
+  padding : 8px;
+
 }
 
 
-#porcentajeEspeciales{
-  width: 0%;
-  height: 30px;
-  background-color: green;
-  text-align: center; /* To center it horizontally (if you want) */
-  line-height: center; /* To center it vertically */
-  color: #FFFFFF;
+#buttonPassword{
+  color:#FFFFFF;
+  text-align: center;
+  background-color: #5F2F96;
+  align-content: left;
+  border:none;
+  cursor: pointer;
+  vertical-align: middle;
+
+}
+
+
+#mensajePasswordEmpty{
+  opacity: 0.0;
+  color: red;
+  margin-top:15px;
+  margin-bottom: 15px;
   
-  justify-content: center;
+}
+
+#cardPorcentaje{ 
+  padding : 0px;
+  margin-bottom:25px;
+}
+
+#porcentajesTodosHeader{
+  background: #5B2993;
+  color:#FFFFFF;
+  text-align: left;
+}
+
+#porcentajesTodos{
+  background: #9D78C6;
   
+}
+
+#colPorcentaje{
+  display:inline-block;
+  padding:0px;
+  margin: 10px;
+  color:#FFFFFF;
+  text-align: left;
 }
 
 #progress{
@@ -60,6 +108,23 @@ li {
   
 }
 
+#passIngresadasHeader{
+  background: #5B2993;
+  color:#FFFFFF;
+  text-align: left;
+}
+
+#passIngresadas{
+  background: #9D78C6;
+}
+
+#rowPassIngresadas{
+ 
+  padding:0px;
+  margin: 0px;
+  color:#FFFFFF;
+  text-align: left;
+}
 
 #colSeguridadPassword{
   
@@ -264,4 +329,22 @@ text-align: center;
   color:#FFFFFF;
   display:inline-block;
   text-align: center;
+}
+
+#cardAclaraciones{ 
+  padding : 0px;
+  margin-top:25px;
+}
+
+#aclaracionesHeader{
+  background: #1E731B;
+  color:#FFFFFF;
+  text-align: left;
+}
+
+#aclaraciones{
+  background: #29A025;
+  color:#FFFFFF;
+  display:inline-block;
+  text-align: left;
 }

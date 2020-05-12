@@ -18,14 +18,14 @@
     <header> 
         <nav class="navbar relative " >
             <span class="navbar-brand mb-0 h1">
-              <img src="img/candado_negro.png" id="logo" class="d-inline-block align-middle" alt="">
+              <img src="img/candado_negro.png" id="logo" class="" alt="">
               My Password . . .
             </span>
       
             <div>
               <ul class="navbar ">
                 <li>
-                  Temas 
+                  <label id="colorTema">Temas</label>
                 </li>
                 <li>
                 <button id="botonWhite" class="btn" type="button">Blanco</button>
@@ -55,7 +55,7 @@
                 <input type="checkbox" onclick='mostrarContrasenia()' class="form-check-input" id="checkboxPassword">
                 <label class="form-check-label" for="checkboxPassword">Mostrar la contraseña</label>
               </div>
-              <button type="submit" onclick='return analizarContrasenia()' class="btn btn-primary" id="buttonPassword">Analizar</button>
+              <button type="submit" onclick='return analizarContrasenia()' id="buttonPassword" class="btn">Analizar</button>
 
               
           </form>
@@ -136,7 +136,7 @@
               </div>
 
 
-              <div class="col-4" id="colCantidades">
+              <div class="col" id="colCantidades">
                 <div class="card" id="cardCantidades" >
                     <div class="card-header" id="cantLetrasMayusHeader" >Cantidad de Mayusculas</div>
                     <div class="card-body" id="cantLetrasMayus">
@@ -208,12 +208,12 @@
         <div class="col"> <!--2 fila 2 columna-->
 
           <div class="row-12"> <!--2 fila 2 columna 1 fila-->
-            <div class="card">
+            <div class="card" id="cardPorcentaje">
               <div class="card-header" id="porcentajesTodosHeader" >Porcentajes</div>
               <div class="card-body" id="porcentajesTodos"> 
               
               
-                <div class="col">
+                <div class="col" id="colPorcentaje">
 
                   <label >Numeros</label>
                   <div class="progress">
@@ -227,7 +227,7 @@
 
              
 
-                <div class="col">
+                <div class="col" id="colPorcentaje">
                   <label >Letras</label>
                   <div class="progress">
                     <div class="progress-bar"  id="porcentajeLetras"></div>
@@ -237,7 +237,7 @@
              
 
               
-                <div class="col">
+                <div class="col" id="colPorcentaje">
                   <label >Caracteres Especiales</label>
                   <div class="progress">
                     <div class="progress-bar"  id="porcentajeEspeciales" ></div>
@@ -266,27 +266,27 @@
                   
                   <div class="col">
                   
-                    <div class="row">
+                    <div class="row" id="rowPassIngresadas">
                       <label id="primeraPass"> </label>
                                        
                     </div>
 
-                    <div class="row">
+                    <div class="row" id="rowPassIngresadas">
                       <label id="segundaPass"> </label>
                                        
                     </div>
 
-                    <div class="row">
+                    <div class="row" id="rowPassIngresadas"> 
                       <label id="terceraPass"> </label>
                                        
                     </div>
 
-                    <div class="row">
+                    <div class="row" id="rowPassIngresadas">
                       <label id="cuartaPass"> </label>
                                        
                     </div>
 
-                    <div class="row">
+                    <div class="row" id="rowPassIngresadas">
                       <label id="quintaPass"> </label>
                                        
                     </div>
@@ -311,28 +311,11 @@
         <div class="col-12"> <!--3 fila 1 columna-->
 
           
-            <div class="card">
+            <div class="card" id="cardAclaraciones">
                 <div class="card-header" id="aclaracionesHeader" > Aclaraciones</div>
                 <div class="card-body" id="aclaraciones">
 
-                  <p>
-                      Los caracteres son los numeros, letras y simbolos ( ! #  %  & ; , .). Los simbolos son todo aquello
-                      que no son numeros y no son letras.
-                      La cantidad de caracteres se refiere a la longitud de la contraseña ingresada.
-                      Los caraceteres especiales son aquellos que definimos previamente como simbolos.
-                      La cantidad de iguales es la cantidad de veces que se repite un caracter de forma consecutiva.
-                      Por ejemplo si ingresamos la siguiente contraseña:
-                      aaa  en este caso hay dos cantidades de iguales porque entre el primer par de aa es una cantidad de iguales
-                      y en el segundo par hay otra cantidad de iguales. En total hay dos cantidades de iguales.
-                      
-                      La cantidad de distintos son la cantidad de pares de caracteres que son diferentes entre si.
-
-                      La cantidad de consecutivos son la cantidad de pares consecutivos. En el caso de los numeros, seria los numeros
-                      consecutivos. En el caso de las letras, seria son letras en orden alfabetico pero teniendo en cuenta 
-                      abc son letras consecutivas pero aez no son consecutivas.
-
-
-                  </p>
+                 
 
                  </div>
             </div>
