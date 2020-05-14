@@ -30,13 +30,7 @@ function quitarMensajePassVacia(){
     document.getElementById('mensajePasswordEmpty').style.opacity="0.0";
 
     document.getElementById('mensajePasswordEmpty').innerHTML= ("No se ha ingresado contraseña.Por favor, vuelva a ingresar la contraseña");
-    /*
-    if (document.getElementById('mensajePasswordEmpty').href == 'css/blackstyle.css'){
-        document.getElementById('mensajePasswordEmpty').style.background="black";
-    }
-    else
-    document.getElementById('mensajePasswordEmpty').style.background="white";
-    */
+   
 }
 
 function cambiarAEstiloNegro(){
@@ -53,12 +47,11 @@ function cambiarAEstiloBlanco(){
 
 function guardarBotonEstilo(color){
 
-    const almacenamiento= localStorage.getItem('Estilo Boton');
-    
+    const almacenamiento= localStorage.getItem('Estilo Boton');   
 
     if(almacenamiento == null){
         const estilo_saved=[];
-        //estilo_saved.push("Black");
+    
         localStorage.setItem('Estilo Boton', color);
     }
     else{
@@ -134,11 +127,9 @@ function limpiarVisualizacionAnalisisPassword(){
     document.getElementById("seguridadPassword").innerHTML=("");
 
     
-    //document.getElementById("porcentajeEspeciales").innerHTML=("0%");
+    
     document.getElementById("porcentajeEspeciales").style.width="0%";
-    //document.getElementById("porcentajeLetras").innerHTML=("0%");
     document.getElementById("porcentajeLetras").style.width="0%";       
-    //document.getElementById("porcentajeNums").innerHTML=("0%"); 
     document.getElementById("porcentajeNums").style.width="0%";   
     
 }
@@ -235,13 +226,13 @@ function verificarSeguridadPasword(secuenciaArmada){
         }
         else{
             if(sonConsecutivos(secuenciaArmada[i],secuenciaArmada[i+1])){
-                //console.log("Los elementos " + secuenciaArmada[i] + secuenciaArmada[i+1]+ " son consecutivos");
+                
                 cantConsecutivos++;
             }
             else{
-                //son distintos ??? NO SE SI DEBERIA CONTARLO
+                
                 cantDistintos++;
-                //console.log("Los elementos " + secuenciaArmada[i] + secuenciaArmada[i+1]+ " son distintos");
+                
             }
 
         }
@@ -262,7 +253,7 @@ function verificarSeguridadPasword(secuenciaArmada){
         i++;
     }
     //analizar el ultimo elemento del arreglo
-    if(i==cantCaracteres-1){ //TENGFO QUE HACER EL IF ???
+    if(i==cantCaracteres-1){ 
         if(esLetra(secuenciaArmada[i])){
             if(esLetraMayuscula(secuenciaArmada[i]))
                 cantLetrasMayusculas++;
@@ -279,17 +270,6 @@ function verificarSeguridadPasword(secuenciaArmada){
         }
 
     }
-
-  
-    console.log("La cantidad de numeros es "+ cantNum );
-    console.log("La cantidad de letras es "+ cantLetras );
-    console.log("La cantidad de letras MAYUS es "+ cantLetrasMayusculas );
-    console.log("La cantidad de letras MINUS es "+ cantLetrasMinusculas );
-    console.log("La cantidad de especiales es "+ cantCaracteresEspeciales );
-    console.log("La cantidad de distintos es "+ cantDistintos );
-    console.log("La cantidad de iguales es "+ cantIguales );
-    console.log("La cantidad de consecutivos es "+ cantConsecutivos );
-
 
     
     infoPassword.cantTotalCaracteres = cantCaracteres;
@@ -319,18 +299,17 @@ function sonConsecutivos(elem1,elem2){
     var consecutivos=false;
     
     if( esNumero(elem1) && esNumero(elem2)){
-        console.log("Los elementos " + elem1+ elem2 + " son numeros consecutivos??");
+        
         if(consecutivosNumericos(elem1,elem2))
         { 
-            console.log("Los elementos SIIII " + elem1+ elem2 + " son numeros consecutivos");
+            
             consecutivos=true;
         }
     }
     else{
         if(esLetra(elem1) && esLetra(elem2))
             if(consecutivosLetras(elem1,elem2)){
-                console.log("Los elementos " + elem1+ elem2 + " son letras consecutivas??");
-            
+
                 consecutivos=true;
             }
         
@@ -343,7 +322,6 @@ function sonConsecutivos(elem1,elem2){
 function consecutivosNumericos(elem1,elem2){
     var esConsecutivo=false;
     if( elem1 !=  9){
-        console.log("Los elementos " + elem1 +""+elem2 + "son consecutivos??? y elem1 es != 9");
         if(elem1.charCodeAt() + 1 == elem2.charCodeAt())
             esConsecutivo=true;
     }
@@ -365,9 +343,9 @@ function esLetra(caracter){
     var letra=false;
     if((codCaracter >= 65 && codCaracter <=90) || ( codCaracter >= 97 && codCaracter <=122))
     {
-        console.log("El caracter es letra Mayus o Min " +caracter );
         letra=true;
     }
+    
 
     return letra;
 
@@ -411,7 +389,6 @@ function analizarUnTipoSecuencia(cantNum,cantLetras,cantEspeciales,cantCaractere
 function guardarPasswordsIngresadas(passwordNueva){
     
     const almacenamiento= localStorage.getItem('Passwords ingresadas');
-    //var password= document.getElementById('inputPassword');
 
     if(almacenamiento == null){
         const pass_ingresadas=[];
@@ -429,8 +406,6 @@ function guardarPasswordsIngresadas(passwordNueva){
         localStorage.setItem('Passwords ingresadas', JSON.stringify(pass_saved));
         
     }
-
-    //pass_saved[0] daria el primer elemento de las pass guardadas 
 
     imprimirPassGuardadas();
    
@@ -517,15 +492,9 @@ function calcularPorcentaje(infoPassword){
     cantEspeciales=infoPassword.cantCaracteresEspeciales,
     cantCaracteres=infoPassword.cantTotalCaracteres;
     
-    porcentajesPassword.porcNumeros=porcentaje(cantNums,cantCaracteres);
-
-    console.log("Porcentaje de Nums es "+porcentajesPassword.porcNumeros);
+    porcentajesPassword.porcNumeros=porcentaje(cantNums,cantCaracteres);    
     porcentajesPassword.porcLetras=porcentaje(cantLetras,cantCaracteres);
-
-    console.log("Porcentaje de Letras es "+porcentajesPassword.porcLetras);
     porcentajesPassword.porcEspeciales=porcentaje(cantEspeciales,cantCaracteres);
-
-    console.log("Porcentaje de Especiales es "+porcentajesPassword.porcEspeciales);
 
     return porcentajesPassword; 
 
@@ -556,17 +525,14 @@ function calculoSeguridadPassword(infoPassword){
     var promedio=0;
 
      var cantTotalCaracteres=infoPassword.cantTotalCaracteres;
+     
      promedio = promedio + cantTotalCaracteres*4;
-     promedio= promedio + ( (cantTotalCaracteres - infoPassword.cantLetrasMayusculas)*2 );
-     promedio= promedio + ( (cantTotalCaracteres - infoPassword.cantLetrasMinusculas)*2 );
      promedio = promedio + infoPassword.cantNum*4;
      promedio = promedio + infoPassword.cantCaracteresEspeciales*6;   
 
-
-
      promedio= promedio - (infoPassword.cantConsecutivos*2);
      promedio= promedio - (infoPassword.cantIguales*2);
-
+       
      var tipoSecuencia=analizarUnTipoSecuencia(infoPassword.cantNum,infoPassword.cantLetras,
         infoPassword.cantCaracteresEspeciales,infoPassword.cantTotalCaracteres);
      
@@ -575,6 +541,11 @@ function calculoSeguridadPassword(infoPassword){
     }    
     if(tipoSecuencia.tipoNumeros == true){
         promedio= promedio - infoPassword.cantNum;
+    }
+    else{
+        promedio= promedio + ( (cantTotalCaracteres - infoPassword.cantLetrasMayusculas)*2 );
+        promedio= promedio + ( (cantTotalCaracteres - infoPassword.cantLetrasMinusculas)*2 );
+     
     }
 
     return promedio;
@@ -617,7 +588,6 @@ function mostrarSeguridadPassword(escalaItensidad){
 }
 
 
-
 function mostrarAclaraciones(){
     document.getElementById('aclaraciones').innerHTML=
     "<p>"+
@@ -632,7 +602,8 @@ function mostrarAclaraciones(){
           " En total hay dos cantidades de iguales.</li>"+
         "<li>La cantidad de distintos son la cantidad de pares de caracteres que son diferentes entre si.</li>"+
         "<li>La cantidad de consecutivos son la cantidad de pares consecutivos. En el caso de los numeros, seria los numeros "+
-        "consecutivos. En el caso de las letras, seria son letras en orden alfabetico pero teniendo en cuenta "+
+        "consecutivos(no en orden) como por ejemplo 1234 son 3 pares de consecutivos pero 149 no son consecutivos. En el caso"+ 
+        "de las letras, seria son letras en orden alfabetico pero teniendo en cuenta "+
         "abc son letras consecutivas pero aez no son consecutivas.</li>"+
 
     "</ol>"+
