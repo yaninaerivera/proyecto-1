@@ -1,10 +1,10 @@
-imprimirPassGuardadas();
+mostrarPassGuardadas();
 
-setEstiloGuardado();
+setEstiloDefault();
 
-function setEstiloGuardado(){
+function setEstiloDefault(){
 
-    var colorEstilo= localStorage.getItem('Estilo Boton');
+    var colorEstilo= localStorage.getItem('Tema Elegido');
 
     if(colorEstilo == null){
         cambiarAEstiloBlanco();
@@ -19,44 +19,31 @@ function setEstiloGuardado(){
     
 }
 
-function mostrarMensajePassVacia(){
-   
-   document.getElementById('mensajePasswordEmpty').style.opacity="1.0";
-   document.getElementById('mensajePasswordEmpty').innerHTML= ("No se ha ingresado contraseña. Por favor, ingrese una contraseña");
-}
-
-function quitarMensajePassVacia(){
-
-    document.getElementById('mensajePasswordEmpty').style.opacity="0.0";
-
-    document.getElementById('mensajePasswordEmpty').innerHTML= ("No se ha ingresado contraseña.Por favor, vuelva a ingresar la contraseña");
-   
-}
 
 function cambiarAEstiloNegro(){
     document.getElementById('estilos').href = 'css/blackstyle.css';
-    guardarBotonEstilo("Black");
+    guardarEstiloElegido("Black");
     
 }
 
 function cambiarAEstiloBlanco(){
     document.getElementById('estilos').href = 'css/whitestyle.css';
-    guardarBotonEstilo("White");
+    guardarEstiloElegido("White");
 
 }
 
-function guardarBotonEstilo(color){
+function guardarEstiloElegido(color){
 
-    const almacenamiento= localStorage.getItem('Estilo Boton');   
+    const almacenamiento= localStorage.getItem('Tema Elegido');   
 
     if(almacenamiento == null){
-        const estilo_saved=[];
-    
-        localStorage.setItem('Estilo Boton', color);
+           
+        localStorage.setItem('Tema Elegido', color);
     }
     else{
-        localStorage.removeItem('Estilo Boton');
-        localStorage.setItem('Estilo Boton',color);
+
+        localStorage.removeItem('Tema Elegido');
+        localStorage.setItem('Tema Elegido',color);
         
     }
 
@@ -74,7 +61,9 @@ document.getElementById("botonBlack").onclick = function(){
 
 
 function mostrarContrasenia(){
+
     var passwordType = document.getElementById("inputPassword");
+
     if(passwordType.type == "password"){
         passwordType.type = "text";
     }else{
@@ -86,8 +75,6 @@ function analizarContrasenia(){
     
     var password = document.getElementById('inputPassword');
    
-    
-
     if(password.value === null || password.value === '' ){
        
         limpiarVisualizacionAnalisisPassword();
@@ -103,6 +90,18 @@ function analizarContrasenia(){
     
     return false;
 }
+
+
+function mostrarMensajePassVacia(){
+   
+    document.getElementById('mensajePasswordEmpty').innerHTML= ("No se ha ingresado contraseña. Por favor, ingrese una contraseña");
+ }
+ 
+ function quitarMensajePassVacia(){
+ 
+     document.getElementById('mensajePasswordEmpty').innerHTML= (" ");
+    
+ }
 
 function limpiarVisualizacionAnalisisPassword(){
 
@@ -135,20 +134,12 @@ function limpiarVisualizacionAnalisisPassword(){
 }
 
 
-function esNumero(caracter){
-    var esNum=false;
-    var codCaracter=caracter.charCodeAt();
 
-    if(codCaracter >= 48 && codCaracter <=57)
-        esNum=true;
-
-    return esNum;
-}
 
 function analizarSecuencia(){
     var secuenciaArmada=armarEstructuraCadena();
-    var infoPasswordAnalizada=verificarSeguridadPasword(secuenciaArmada);
-    mostrarInfoAnalisisPassword(infoPasswordAnalizada);
+    var infoPasswordAnalizada=calcularCantidadesPassword(secuenciaArmada);
+    mostrarInfoPassword(infoPasswordAnalizada);
     
 }
 function armarEstructuraCadena(){
@@ -166,40 +157,11 @@ function armarEstructuraCadena(){
      return secuencia;
      
  }
-function contarNumeros(cadenaIngresada){
 
-    var contAparicionesNumeros=0;
-    var i=0; 
-    
-    while (i < cadenaIngresada.length){
-         if(esNumero(cadenaIngresada[i]))
-            contAparicionesNumeros++;
-        
-        i++;
-    }
-    
-    analizarPass.innerHTML=("La cantidad de numerso de la pass es " +contAparicionesNumeros);
-
-}
+ 
 
 
-
-function contarLetras(cadenaIngresada){
-    var contAparicionesLetras=0;
-    var i=0; 
-    
-    while (i < cadenaIngresada.length){
-         if(esLetra(cadenaIngresada[i]))
-            contAparicionesLetras++;
-        
-        i++;
-    }
-    analizarPass.innerHTML=("La cantidad de letras de la pass es " +contAparicionesLetras);
-
-}
-
-
-function verificarSeguridadPasword(secuenciaArmada){
+function calcularCantidadesPassword(secuenciaArmada){
 
     var infoPassword={
         cantTotalCaracteres : 0,
@@ -319,6 +281,16 @@ function sonConsecutivos(elem1,elem2){
 
 }
 
+function esNumero(caracter){
+    var esNum=false;
+    var codCaracter=caracter.charCodeAt();
+
+    if(codCaracter >= 48 && codCaracter <=57)
+        esNum=true;
+
+    return esNum;
+}
+
 function consecutivosNumericos(elem1,elem2){
     var esConsecutivo=false;
     if( elem1 !=  9){
@@ -328,15 +300,6 @@ function consecutivosNumericos(elem1,elem2){
     return esConsecutivo;
 }
 
-function consecutivosLetras(elem1,elem2){
-
-    var esConsecutivo=false;
-        if( elem1.charCodeAt() + 1 == elem2.charCodeAt()){
-            esConsecutivo=true;
-        }
-    return esConsecutivo;
-
-}
 
 function esLetra(caracter){
     var codCaracter=caracter.charCodeAt();
@@ -361,30 +324,16 @@ function esLetraMayuscula(caracter){
    return esMayus;
 }
 
-function analizarUnTipoSecuencia(cantNum,cantLetras,cantEspeciales,cantCaracteres){
+function consecutivosLetras(elem1,elem2){
 
-    var tipoSecuencia={
-        tipoLetras : false,
-        tipoNumeros:false,
-        tipoEspeciales:false,
-    }
-
-    if(cantLetras == cantCaracteres)
-    {
-        tipoSecuencia.tipoLetras=true;
-    }
-    else
-    {
-        if(cantNum == cantCaracteres)
-            tipoSecuencia.tipoNumeros=true;
-        else
-            if(cantEspeciales == cantCaracteres)
-            tipoSecuencia.tipoEspeciales=true;
-    }
-
-    return tipoSecuencia;
+    var esConsecutivo=false;
+        if( elem1.charCodeAt() + 1 == elem2.charCodeAt()){
+            esConsecutivo=true;
+        }
+    return esConsecutivo;
 
 }
+
 
 function guardarPasswordsIngresadas(passwordNueva){
     
@@ -407,12 +356,12 @@ function guardarPasswordsIngresadas(passwordNueva){
         
     }
 
-    imprimirPassGuardadas();
+    mostrarPassGuardadas();
    
 
 }
 
-function imprimirPassGuardadas(){
+function mostrarPassGuardadas(){
     const almacenamiento= localStorage.getItem('Passwords ingresadas');
 
     const pass_saved=JSON.parse(almacenamiento);
@@ -431,7 +380,7 @@ function chequearExistenciaPassGuardada(pass_saved,pos,elemDoc){
     document.getElementById(elemDoc).innerHTML=pass_saved[pos];
 }
 
-function mostrarInfoAnalisisPassword(infoPassword){
+function mostrarInfoPassword(infoPassword){
 
     mostrarCantidadesAnalisis(infoPassword);
 
@@ -462,6 +411,31 @@ function mostrarCantidadesAnalisis(infoPassword){
     document.getElementById("cantLetrasMinus").innerHTML=infoPassword.cantLetrasMinusculas;
 
     document.getElementById("cantNum").innerHTML=infoPassword.cantNum;
+}
+
+function analizarUnTipoSecuencia(cantNum,cantLetras,cantEspeciales,cantCaracteres){
+
+    var tipoSecuencia={
+        tipoLetras : false,
+        tipoNumeros:false,
+        tipoEspeciales:false,
+    }
+
+    if(cantLetras == cantCaracteres)
+    {
+        tipoSecuencia.tipoLetras=true;
+    }
+    else
+    {
+        if(cantNum == cantCaracteres)
+            tipoSecuencia.tipoNumeros=true;
+        else
+            if(cantEspeciales == cantCaracteres)
+            tipoSecuencia.tipoEspeciales=true;
+    }
+
+    return tipoSecuencia;
+
 }
 
 function mostrarInfoTipoSecuencia(tipoSecuencia){
@@ -592,16 +566,16 @@ function mostrarAclaraciones(){
     document.getElementById('aclaraciones').innerHTML=
     "<p>"+
      "<ol>"+
-        "<li>Los caracteres son los numeros, letras y simbolos ( ! #  %  & ; , .). Los simbolos son todo aquello "+
-        "que no son numeros y no son letras. </li>"+
-        "<li>La cantidad de caracteres se refiere a la longitud de la contraseña ingresada. </li>"+
+        "<li>Los cáracteres son los números, letras y simbolos ( ! #  %  & ; , .). Los simbolos son todo aquello "+
+        "que no son números y no son letras. </li>"+
+        "<li>La cantidad de cáracteres se refiere a la longitud de la contraseña ingresada. </li>"+
         "<li> Los caraceteres especiales son aquellos que definimos previamente como simbolos.</li>"+
-        "<li>La cantidad de iguales es la cantidad de veces que se repite un caracter de forma consecutiva.<br>"+
+        "<li>La cantidad de iguales es la cantidad de veces que se repite un cáracter de forma consecutiva.<br>"+
          " Por ejemplo si ingresamos la siguiente contraseña:<br>aaa  en este caso hay dos cantidades de iguales "+
           "porque entre el primer par de aa es una cantidad de iguales y en el segundo par hay otra cantidad de iguales."+
           " En total hay dos cantidades de iguales.</li>"+
-        "<li>La cantidad de distintos son la cantidad de pares de caracteres que son diferentes entre si.</li>"+
-        "<li>La cantidad de consecutivos son la cantidad de pares consecutivos. En el caso de los numeros, seria los numeros "+
+        "<li>La cantidad de distintos son la cantidad de pares de caracteres que son diferentes entre sí.</li>"+
+        "<li>La cantidad de consecutivos son la cantidad de pares consecutivos. En el caso de los números, seria los numeros "+
         "consecutivos(no en orden) como por ejemplo 1234 son 3 pares de consecutivos pero 149 no son consecutivos. En el caso"+ 
         "de las letras, seria son letras en orden alfabetico pero teniendo en cuenta "+
         "abc son letras consecutivas pero aez no son consecutivas.</li>"+
