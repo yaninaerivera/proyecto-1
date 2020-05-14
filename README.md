@@ -1,3 +1,17 @@
+
+Tema 1 : Determinar que tan segura es una contraseña 
+
+La pagina web "My Password . . . " realiza un analisis de la contraseña ingresada por el usuario. Muestra un detalle de cuantos caracteres tiene 
+la contraseña, cuantos de estos son: numeros, letras e indicando la cantidad de mayusculas y minusculas y caracteres especiales.
+Además nos indica cuantos de esos caracteres son iguales, consecutivos y distintos. Nos dice si es una secuencia unicamente conformada 
+por numeros, letras o especiales. Nos permite visualizar un porcentaje de la cantidad de numeros, letras y caracteres que componen
+la contraseña ingresada. Al final hay aclaraciones sobre que representan ciertas cantidades ya que pueden no ser entendibles o confusas 
+para algunos los usuarios.
+La pagina guarda las ultimas 5 contraseñas ingresadas en el navegador y las muestra. Tambien, guarda el tema elegido (pudiendo elegir
+entre dos temas ) por el usuario para que la proxima vez que utilice la pagina ya este ese tema elegido.
+
+--------------------------------------------------*********-------------------------------*******-----------------------
+
 # Proyecto 1:  HTML - CSS - Javascript - DOM
 
 **Fecha de entrega:** 14 de Mayo de 2020 (inclusive).
